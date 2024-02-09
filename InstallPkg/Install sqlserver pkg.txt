@@ -1,0 +1,20 @@
+
+# Check installation
+#You can use the following command to list if more than one version is installed
+Get-Module SqlServer -ListAvailable
+
+
+Install-Module -Name SqlServer -Scope AllUsers
+
+
+# You can also use the Install-Module command to overwrite a previous version.
+Install-Module -Name SqlServer -AllowClobber
+
+
+# List all commands from module
+Get-Command -Module SqlServer -CommandType Cmdlet
+
+
+
+# enable tls 1.2
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 

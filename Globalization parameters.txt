@@ -1,0 +1,167 @@
+
+To start the spooler service on a remote computer named DC01, you would type 
+
+		sc \\DC01 start spooler. 
+
+
+To list tasks running on DC01, you need to use the /S (for "system") parameter and supply the name DC01 without backslashes, like this: 
+		tasklist /S DC01
+
+
+
+Get-Process, Stop-Process, Get-Service, and Stop-Service.
+
+
+computer shutdown command might be Stop-Computer. 
+
+Lists all computers on a network might be Get-Computer. 
+
+Gets the system date is Get-Date.
+
+===================================================== variables ========================================
+
+Create a variable "loc" and assigns Get-Location object to it:
+	$loc = Get-Location
+
+Prints $loc's content:
+	PS> $loc
+
+Clears $loc:
+	Remove-Variable -Name loc
+
+=========================================================================================================
+			Windows Environment Variables
+			------------------------------
+View env variables:
+
+	Get-ChildItem env:
+
+
+To see the operating system root directory, you can use the command-shell %SystemRoot% variable from within Windows PowerShell by typing:
+	PS> $env:SystemRoot
+
+You can also create and modify environment variables from within Windows PowerShell. Environment variables accessed from Windows PowerShell conform to the normal rules for environment variables elsewhere in Windows.
+=========================================================================================================
+
+$a = new-object system.globalization.datetimeformatinfo
+$a
+
+You’re going to get back information similar to this:
+
+
+AMDesignator                     : AM
+Calendar                         : System.Globalization.GregorianCalendar
+DateSeparator                    : /
+FirstDayOfWeek                   : Sunday
+CalendarWeekRule                 : FirstDay
+FullDateTimePattern              : dddd, dd MMMM yyyy HH:mm:ss
+LongDatePattern                  : dddd, dd MMMM yyyy
+LongTimePattern                  : HH:mm:ss
+MonthDayPattern                  : MMMM dd
+PMDesignator                     : PM
+RFC1123Pattern                   : ddd, dd MMM yyyy HH':'mm':'ss 'GMT'
+ShortDatePattern                 : MM/dd/yyyy
+ShortTimePattern                 : HH:mm
+SortableDateTimePattern          : yyyy'-'MM'-'dd'T'HH':'mm':'ss
+TimeSeparator                    : :
+UniversalSortableDateTimePattern : yyyy'-'MM'-'dd HH':'mm':'ss'Z'
+YearMonthPattern                 : yyyy MMMM
+AbbreviatedDayNames              : {Sun, Mon, Tue, Wed...}
+ShortestDayNames                 : {Su, Mo, Tu, We...}
+DayNames                         : {Sunday, Monday, Tuesday, Wednesday...
+AbbreviatedMonthNames            : {Jan, Feb, Mar, Apr...}
+MonthNames                       : {January, February, March, April...}
+IsReadOnly                       : False
+NativeCalendarName               : Gregorian Calendar
+AbbreviatedMonthGenitiveNames    : {Jan, Feb, Mar, Apr...}
+MonthGenitiveNames               : {January, February, March, April...}
+
+................................................................................................
+
+$a = Get-Date
+
+$a = Get-Date
+"Day: " + $a.Day
+"Month: " + $a.Month
+"Year: " + $a.Year
+"Hour: " + $a.Hour
+"Minute: " + $a.Minute
+"Second: " + $a.Second
+
+
+$a.AddDays(-90)
+
+
+Methods available:
+
+•AddDays
+•AddHours
+•AddMilliseconds
+•AddMinutes
+•AddMonths
+•AddSeconds
+•AddTicks
+•AddYears
+
+
+$a = Get-Date
+"Date: " + $a.ToShortDateString()
+"Time: " + $a.ToShortTimeString()
+
+
+$a = Get-Date
+"Daylight Saving Time: " + $a.IsDaylightSavingTime()
+"Day of Week: " + $a.DayOfWeek
+"Day of Year: " + $a.DayOfYear
+
+Daylight Saving Time: True
+Day of Week: Thursday
+Day of Year: 298
+
+
+Universal Time - that will automatically display the local time as Greenwich time.
+$a = Get-Date
+"Universal Time: " + $a.ToUniversalTime()
+
+
+PS C:\> $A = Get-Date
+PS C:\> $A.IsDaylightSavingTime()
+True
+
+...................................................................................
+
+$a = new-object system.globalization.datetimeformatinfo
+$b = $a.DayNames
+$b
+
+The same thing is true for month names:
+
+$a = new-object system.globalization.datetimeformatinfo
+$b = $a.MonthNames
+$b
+
+January
+February
+March
+April
+May
+June
+July
+August
+September
+October
+November
+December
+
+
+
+
+
+
+
+
+
+
+
+
+

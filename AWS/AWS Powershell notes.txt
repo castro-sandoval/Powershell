@@ -1,0 +1,6 @@
+\\Ip-0ae81b47\aws
+
+AWSToolsAndSDKForNet_sdk-3.3.292.0_ps-3.3.283.0_tk-1.14.3.3.msi
+
+Set-AWSCredentials -AccessKey -SecretKey g
+Get-AWSCmdletName -Service S3

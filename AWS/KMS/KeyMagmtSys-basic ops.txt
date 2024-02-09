@@ -1,0 +1,47 @@
+# List KMS keys in this account
+
+$limit = 10
+Get-KmsKeyList | Select-Object -First $limit
+
+======================================================================
+# Describe a KMS key
+
+# Replace the following example key ARN with any valid key identfier
+$keyId = 'arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab'
+Get-KmsKey -KeyId $ke
+
+======================================================================
+# Create a KMS key
+
+$desc = 'Key for protecting critical data'
+New-KmsKey -Description $desc
+
+
+======================================================================
+# Generate a data key
+
+# Replace the following example key ARN with any valid key identfier
+$keyId = 'arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab'
+$keySpec = 'AES_256'
+
+$response = New-KmsDataKey -KeyId $keyId -KeySpec $keySpec
+$plaintextKey = $response.Plaintext
+$encryptedKey = $response.CiphertextBlob
+
+======================================================================
+# Enable a KMS key
+
+# Replace the following example key ARN with a valid key ID or key ARN
+$keyId = 'arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab'
+Enable-KmsKey -KeyId $keyId
+
+======================================================================
+# Disable a KMS key
+
+# Replace the following example key ARN with a valid key ID or key ARN
+$keyId = 'arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab'
+Disable-KmsKey -KeyId $keyId
+======================================================================
+
+======================================================================
+

@@ -1,0 +1,22 @@
+Get-EventLog -LogName application -EntryType Error, Warning -Newest 250 | select -Property EventID, TimeGenerated, EntryType, Message |where message -Like *MSSQLSERVER* | sort -Property timegenerated | convertTo-html | out-file "C:\Users\Sandoval.castro\Documents\SQL Server Management Studio\Custom Reports\ev_SQLerror.htm"
+
+
+Get-EventLog -LogName application -EntryType Error, Warning -Newest 250 | select -Property EventID, TimeGenerated, EntryType, Message |where message -Like *optimiza* | sort -Property timegenerated | convertTo-html | out-file "C:\Users\Sandoval.castro\Documents\SQL Server Management Studio\Custom Reports\ev_OptimizaError.htm"
+
+
+Get-EventLog -Logname Application -After "01/12/2016" -EntryType Error,Warning | where Message -Like "*sqlserver*" | select -Property TimeGenerated, EntryType, Source, Message | Sort-Object TimeGenerated -Descending | Export-Csv "c:\temp\eventlog.csv"
+
+Get-EventLog -Logname System -After "01/12/2016" -EntryType Error,Warning | select -Property TimeGenerated, EntryType, Source, Message | Sort-Object TimeGenerated -Descending | Export-Csv "c:\temp\eventlog.csv"
+
+
+$DateLimit = Get-Date
+$DateLimit = $DateLimit.AddDays(-10)
+Get-EventLog -Logname Application -After $DateLimit -EntryType Error,Warning | where Message -Like "*optimiza*" | select -Property TimeGenerated, EntryType, Source, Message | Sort-Object TimeGenerated -Descending | ConvertTo-Html | Out-File "C:\Users\sandoval.castro\Documents\SQL Server Management Studio\Custom Reports\ev_Optimiza.htm"
+Copy-Item -Path "\\808793-TKOPT1\C$\Users\sandoval.castro\Documents\SQL Server Management Studio\Custom Reports\Optimiza_ev.htm" -Destination "\\808803-TKOPT6\C$\Users\sandoval.castro\Documents\SQL Server Management Studio\Custom Reports\Optimiza_ev.htm"
+
+
+$DateLimit = Get-Date
+$DateLimit = $DateLimit.AddDays(-10)
+Get-EventLog -Logname Application -After $DateLimit -EntryType Error,Warning | where Message -Like "*SQLSERVER*" | where Message -NotLike "*Report server*" | where Message -NotLike "*ReportingService*" | select -Property TimeGenerated, EntryType, Source, Message | Sort-Object TimeGenerated -Descending | ConvertTo-Html | Out-File "C:\Users\sandoval.castro\Documents\SQL Server Management Studio\Custom Reports\ev_SQLSERVER.htm"
+
+

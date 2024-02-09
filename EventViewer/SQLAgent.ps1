@@ -1,0 +1,1 @@
+Get-EventLog -Logname Application | Where-Object {($_.EventID -in 101,102,103) -and ($_.Source -like "*SQL*")} 

@@ -1,0 +1,17 @@
+
+
+/* scdp-restore-sql-1-prod  10.232.123.107  */
+
+use [DATAOPS]
+go
+drop PROCEDURE CheckLinkedServer
+go
+CREATE PROCEDURE CheckLinkedServer(@linkedserver sysname, @rmtuser sysname, @rmtpwrd sysname) as
+begin
+	SET NOCOUNT ON
+	if (not(exists(SELECT * FROM [master].sys.servers where [data_source]=@linkedserver)))
+	begin
+		EXEC master.dbo.sp_addlinkedserver @server = @linkedserver, @srvproduct=N'SQL Server'
+		EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname = @linkedserver, @locallogin = NULL , @useself = N'False', @rmtuser = @rmtuser, @rmtpassword = @rmtpwrd
+	end
+end

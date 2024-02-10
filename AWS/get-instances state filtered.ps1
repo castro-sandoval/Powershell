@@ -5,7 +5,7 @@ $csvFile="c:\temp\LLamaDevVMs.csv"
 Write-Host ("•	LLamaDev VMs -> VPC=vpc-85d2f7e3")
 Write-Host ("Checking AWS and generating "+$csvFile+" ...")
 
-Set-AWSCredentials -AccessKey AKIAIK6ODY2F7MFNUVBQ -SecretKey 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
+Set-AWSCredentials -AccessKey  -SecretKey 
 
 $region = "us-east-1"
 $filter =  @{Name="vpc-id";Value="vpc-85d2f7e3"}

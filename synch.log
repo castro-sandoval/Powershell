@@ -1,0 +1,11 @@
+Adding C:\Dataops\bin\BackupMonitor.ps1
+Adding C:\Dataops\bin\DeleteDIFFolderFULL.ps1
+Adding C:\Dataops\bin\DeleteOldFiles.ps1
+Adding C:\Dataops\bin\IntermediateFullBackups.ps1
+Adding C:\Dataops\bin\ReportDiskSpace.ps1
+Adding C:\Dataops\bin\ShrinkLogFiles.ps1
+Adding C:\Dataops\bin\SynchScripts.ps1
+Adding C:\Dataops\bin\UploadBackupsToS3.ps1
+Adding C:\Dataops\bin\UploadLogsToS3.ps1
+Adding C:\Dataops\bin\UploadTMIBackupsToS3.ps1
+Adding C:\Dataops\bin\UploadToS3TaskScheluder.ps1

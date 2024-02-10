@@ -1,5 +1,5 @@
 ﻿
-Set-AWSCredential -AccessKey AKIAQ7FRZQP3ZO7BLDLL -SecretKey 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
+Set-AWSCredential -AccessKey  -SecretKey 
 
 $BulkFolder      = "lcp2-sql-backups-us-east-1/Dataops/"
 

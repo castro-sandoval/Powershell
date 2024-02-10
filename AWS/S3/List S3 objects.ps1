@@ -1,6 +1,6 @@
 cls
-$AccessKey='AKIAQ7FRZQP3YPXB67UQ'
-$SecretKey='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'
+$AccessKey='********'
+$SecretKey='*************'
 
 Set-AWSCredential -AccessKey $AccessKey -SecretKey $SecretKey
 

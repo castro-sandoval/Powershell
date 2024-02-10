@@ -1,0 +1,33 @@
+Function Execute-Procedure {
+    Param(
+        [Parameter(Mandatory=$true)][int]$id
+        , [Parameter(Mandatory=$true)][string]$idvar
+    )
+    Process
+    {
+        $scon = New-Object System.Data.SqlClient.SqlConnection
+        $scon.ConnectionString = "Data Source=OurServer;Initial Catalog=OurDatabase;Integrated Security=true"
+        
+        $cmd = New-Object System.Data.SqlClient.SqlCommand
+        $cmd.Connection = $scon
+        $cmd.CommandTimeout = 0
+        $cmd.CommandText = "EXEC stpChangeAdd $id,'$idvar'"
+
+        try
+        {
+            $scon.Open()
+            $cmd.ExecuteNonQuery() | Out-Null
+        }
+        catch [Exception]
+        {
+            Write-Warning $_.Exception.Message
+        }
+        finally
+        {
+            $scon.Dispose()
+            $cmd.Dispose()
+        }
+    }
+}
+
+Execute-Procedure -id 5 -idvar "V-8"

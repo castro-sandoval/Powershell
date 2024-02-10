@@ -1,0 +1,3 @@
+﻿# create new or reset the schedule to ...
+$Time = New-ScheduledTaskTrigger -At 13:13 -Once
+Set-ScheduledTask -TaskName "CountS3Files" -Trigger $Time

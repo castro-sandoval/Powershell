@@ -1,0 +1,26 @@
+# ----- "C:\InstancesPROD_2005.txt" content: -------
+SERVER1\INST1
+SERVER2\INST2
+
+
+#----------------------------------CODE START-----------------------------------------
+
+
+foreach ($svr in get-content "C:\InstancesPROD_2005.txt"){
+
+	$svr
+
+	$dt = new-object "System.Data.DataTable"
+
+	$cn = new-object System.Data.SqlClient.SqlConnection "server=$svr;database=msdb;Integrated Security=sspi"
+
+	$cn.Open()
+
+	$sql = $cn.CreateCommand()
+
+	$sql.CommandText = "SELECT TOP 1 * FROM <table>"
+	$rdr = $sql.ExecuteReader()
+	$dt.Load($rdr)
+	$cn.Close()
+	$dt | Format-Table -autosize
+}

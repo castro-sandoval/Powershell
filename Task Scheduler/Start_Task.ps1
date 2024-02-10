@@ -1,0 +1,1 @@
+﻿Start-ScheduledTask -TaskName "CountS3Files"

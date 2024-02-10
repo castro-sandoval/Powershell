@@ -1,0 +1,8 @@
+
+$server = new-object (“Microsoft.SqlServer.Management.Smo.Server”) $SQLServer
+
+$server.EnumErrorLogs()  	-- lista arquivos de ErrorLog do SQL Server
+$server.ErrorLogPath		-- Path dos arquivos de ErrorLog
+
+# Get instances running
+(get-itemproperty 'HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server').InstalledInstances
